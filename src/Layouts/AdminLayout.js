@@ -5,7 +5,7 @@ import DashBoard from '../Pages/Admin/Dashboard/Dashboard';
 const AdminLayout = () => {
     return (
         <div>
-            <div className="flex">
+            <div className="lg:flex">
                 <DashBoard></DashBoard>
                 <Outlet></Outlet>
             </div>

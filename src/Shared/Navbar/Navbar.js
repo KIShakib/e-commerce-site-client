@@ -12,25 +12,25 @@ const Navbar = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-lg">
                         <li><Link className='hover:text-red-700 font-bold'>Home</Link></li>
-                        <li><Link className='hover:text-red-700 font-bold'>Food</Link></li>
+                        <li><Link to="/foods" className='hover:text-red-700 font-bold'>Foods</Link></li>
                         <li><Link className='hover:text-red-700 font-bold'>Orders</Link></li>
                         <li><Link to="/admin" className='hover:text-red-700 font-bold'>Admin Dashboard</Link></li>
                     </ul>
                 </div>
-                <Link>
+                <Link to="/">
                     <img className='w-28 rounded-full' src={logo} alt="" />
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 text-lg">
                     <li><Link className='hover:text-red-700 font-bold'>Home</Link></li>
-                    <li><Link className='hover:text-red-700 font-bold'>Food</Link></li>
+                    <li><Link to="/foods" className='hover:text-red-700 font-bold'>Foods</Link></li>
                     <li><Link className='hover:text-red-700 font-bold'>Orders</Link></li>
                     <li><Link to="/admin" className='hover:text-red-700 font-bold'>Admin Dashboard</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn rounded bg-[#EB0029] border-none text-white hover:animate-pulse">PURCHASE NOW</Link>
+                <Link className="btn rounded bg-[#EB0029] border-none text-white hover:animate-pulse">ORDER NOW</Link>
             </div>
         </div>
     );
