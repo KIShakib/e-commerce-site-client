@@ -1,8 +1,11 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../Assets/Image/Logo/Shakib's_Kitchen.png";
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
     return (
         <div className="navbar bg-white h-28">
             <div className="navbar-start">
@@ -30,7 +33,11 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn rounded bg-[#EB0029] border-none text-white hover:animate-pulse">ORDER NOW</Link>
+                {
+                    user?.uid ?
+                        <Link to="/foods" className="btn rounded bg-[#EB0029] border-none text-white hover:animate-pulse">ORDER NOW</Link>
+                        : <Link to="/login" className="btn rounded bg-[#EB0029] border-none text-white hover:animate-pulse">LOGIN NOW</Link>
+                }
             </div>
         </div>
     );

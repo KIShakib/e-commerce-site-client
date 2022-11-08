@@ -20,12 +20,15 @@ const AddReviewForm = () => {
         const reviewerEmail = form.email.value;
         const reviewText = form.reviewText.value;
         const ratings = form.ratings.value;
+        const foodId = _id;
         const review = {
             reviewerEmail,
             reviewText,
-            ratings
+            ratings,
+            foodName,
+            foodId,
         }
-        console.log(review);
+        
     }
 
 
