@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AdminLayout from "../../Layouts/AdminLayout";
 import Main from "../../Layouts/Main";
+import AddReviewForm from "../../Pages/AddReviewForm/AddReviewForm";
 import AddProducts from "../../Pages/Admin/AddProducts/AddProducts";
 import FoodDetails from "../../Pages/FoodDetails/FoodDetails";
 import Foods from "../../Pages/Foods/Foods";
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
                 path: "/fooddetails/:id",
                 element: <FoodDetails></FoodDetails>,
                 loader: ({params})=> fetch(`http://localhost:5000/food/${params.id}`)
+            },
+            {
+                path: "/addreview/:_id/:foodName",
+                element: <AddReviewForm></AddReviewForm>
             }
         ]
     },

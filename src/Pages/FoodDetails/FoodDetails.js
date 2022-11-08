@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { FaThList } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import FoodReviews from '../FoodReviews/FoodReviews';
 
 const FoodDetails = () => {
     const food = useLoaderData();
@@ -10,17 +11,9 @@ const FoodDetails = () => {
     return (
         <div>
             <div>
-                <div className="min-h-screen from-pink-200 via-pink-400 to-pink-600 bg-gradient-to-br pb-10">
-                    <div className="w-full md:w-7/12 pt-5 px-4 mx-auto text-center">
-                        <div className="text-sm text-white py-1">
-                            This components requires
-                            <Link className="text-white font-semibold"
-                            >Material Tailwind CSS & JS
-                            </Link>
-                            for the shadows, ripple effects and card classes. <br /><br />
-                            A component by<Link className="text-white font-semibold" alt="abc">
-                                Creative Tim </Link>.
-                        </div>
+                <div className="min-h-screen from-pink-200 via-pink-400 to-pink-600 bg-gradient-to-br pb-5">
+                    <div className='mb-14 pt-5'>
+                        <p className='text-4xl font-bold foods-text text-center'>Detail About <span className='text-red-600 font-extrabold'>{foodName}</span></p>
                     </div>
 
                     <div
@@ -67,6 +60,9 @@ const FoodDetails = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <FoodReviews food={food}></FoodReviews>
             </div>
         </div>
     );
