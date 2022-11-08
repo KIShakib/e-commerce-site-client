@@ -12,6 +12,7 @@ const AddProducts = () => {
         const price = form.price.value;
         const photoURL = form.photoURL.value;
         const person = form.person.value;
+        const description = form.description.value;
 
         const ingredient1 = form.ingredient1.value;
         const ingredient2 = form.ingredient2.value;
@@ -27,7 +28,8 @@ const AddProducts = () => {
             price,
             photoURL,
             person,
-            ingredient
+            ingredient,
+            description
         }
         console.log(food);
         fetch("http://localhost:5000/addfood", {
@@ -87,6 +89,10 @@ const AddProducts = () => {
                         <input type="text" name='ingredient5' className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" />
                         <input type="text" name='ingredient6' className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" />
                     </div>
+                </div>
+                <div>
+                    <label htmlFor="description" className="block mb-2 text-sm  text-gray-800 font-bold">Description</label>
+                    <input type="text" name="description" className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='1' required />
                 </div>
                 <div className="flex items-start mb-6">
                     <div className="flex items-center h-5">

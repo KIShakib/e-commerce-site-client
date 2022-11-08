@@ -4,6 +4,7 @@ import Food from '../Food/Food';
 
 const Foods = () => {
     const foods = useLoaderData();
+    console.log(foods);
     return (
         <div>
             <div className='my-14'>
