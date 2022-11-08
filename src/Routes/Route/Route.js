@@ -5,9 +5,11 @@ import AddReviewForm from "../../Pages/AddReviewForm/AddReviewForm";
 import AddProducts from "../../Pages/Admin/AddProducts/AddProducts";
 import Login from "../../Pages/Authentication/Login/Login";
 import SignUp from "../../Pages/Authentication/SignUp/SignUp";
+import Blogs from "../../Pages/Blogs/Blogs";
 import FoodDetails from "../../Pages/FoodDetails/FoodDetails";
 import Foods from "../../Pages/Foods/Foods";
 import Home from "../../Pages/Home/Home";
+import MyReviews from "../../Pages/MyReviews/MyReviews";
 import User from "../../Pages/User/User";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -45,6 +47,14 @@ export const router = createBrowserRouter([
             {
                 path: "/user",
                 element: <User></User>
+            },
+            {
+                path: "/myreviews",
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+            },
+            {
+                path: "/blogs",
+                element: <Blogs></Blogs>
             }
         ]
     },
@@ -54,7 +64,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/admin/addproduct",
-                element: <AddProducts></AddProducts>
+                element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>
             }
         ]
     }

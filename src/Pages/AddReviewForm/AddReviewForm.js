@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useParams } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const AddReviewForm = () => {
     const [food, setFood] = useState({});
+    const { user } = useContext(AuthContext);
     const { _id } = useParams();
     const { category, foodName, origin, ingredient, person, photoURL, price, description } = food;
 
@@ -21,6 +24,7 @@ const AddReviewForm = () => {
         const reviewText = form.reviewText.value;
         const ratings = form.ratings.value;
         const foodId = _id;
+
         const review = {
             reviewerEmail,
             reviewText,
@@ -28,7 +32,23 @@ const AddReviewForm = () => {
             foodName,
             foodId,
         }
-        
+        console.log(review);
+        fetch("http://localhost:5000/addreview", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    toast.success(`${reviewerEmail} Your Review Added Successfully. Thanks For Your Review.`)
+                    form.reset();
+                }
+            })
+
     }
 
 
@@ -45,7 +65,10 @@ const AddReviewForm = () => {
 
                             <div className="mb-3">
                                 <label className="mb-2 block font-bold">Your Email</label>
-                                <input type="email" name='email' placeholder="Enter your email" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" />
+                                <input type="email"
+                                    value={user?.email}
+                                    readOnly
+                                    name='email' placeholder="Enter your email" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" />
                             </div>
 
                             <div className="mb-3">

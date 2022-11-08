@@ -8,10 +8,10 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 const SignUp = () => {
     const navigate = useNavigate();
     const [accepted, setAccepted] = useState(false);
-    const { user, createUser, theme, updateUserProfile } = useContext(AuthContext);
+    const { user, createUser, theme, updateUserProfile, logOut } = useContext(AuthContext);
 
     const location = useLocation();
-    const from = location?.state?.from?.pathname || "/user";
+    const from = location?.state?.from?.pathname || "/login";
 
 
     // Handle Create User
@@ -30,8 +30,10 @@ const SignUp = () => {
         createUser(userEmail, userPassword)
             .then(result => {
                 console.log(result);
-                toast.success("Your Account Created Successfully. Thanks For Signup. <3");
                 handleUpdateUserProfile(userName, userPhotoURL);
+                logOut();
+                toast.success("Your Account Created Successfully. Thanks For Signup. Now Please Login...");
+                navigate(from);
             })
             .catch(err => {
                 console.log(err);
@@ -55,11 +57,11 @@ const SignUp = () => {
             .catch(err => console.error(err))
     }
 
-    useEffect(() => {
-        if (user) {
-            navigate(from);
-        }
-    }, [user, from, navigate]);
+    // useEffect(() => {
+    //     if (user) {
+    //         navigate(from);
+    //     }
+    // }, [user, from, navigate]);
 
     return (
         <div div className={`${theme ? "bg-gray-900" : "bg-yellow-100"} h-screen overflow-hidden flex items-center justify-center pt-14`

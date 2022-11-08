@@ -5,6 +5,8 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const User = () => {
     const { user, logOut, theme } = useContext(AuthContext);
+
+
     return (
         <div>
             {
