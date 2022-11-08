@@ -16,7 +16,7 @@ const HomePageFoods = () => {
                 <p className='text-4xl font-bold foods-text text-center'><span className='text-red-600'>Some</span> Delicious Food</p>
                 <p className='text-center foods-header'>Here Is Your Some Delicious Food Items. I Serve Various Kind Of Dishes, Bowl, Platter etc. <br /> You Can Find More On Foods Page. Can Placed Your Desire Order.</p>
             </div>
-            <div className='lg:grid grid-cols-3'>
+            <div className='lg:grid grid-cols-3 gap-4'>
                 {
                     foods.map(food => <HomePageFood key={food._id} food={food}></HomePageFood>)
                 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import FeatureSection from '../FeatureSection/FeatureSection';
 import HomePageFoods from '../HomePageFoods/HomePageFoods';
 import "./Home.css";
 
@@ -45,8 +46,12 @@ const Home = () => {
                 </div>
             </div>
             {/* Foods Div */}
-            <div className='my-28'>
+            <div className='my-28 lg:w-[90%] lg:mx-auto'>
                 <HomePageFoods></HomePageFoods>
+            </div>
+            {/* Extra Sections */}
+            <div>
+                <FeatureSection></FeatureSection>
             </div>
         </div>
     );
