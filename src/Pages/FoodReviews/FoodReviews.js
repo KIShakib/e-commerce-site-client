@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import FoodReview from '../FoodReview/FoodReview';
 
 const FoodReviews = ({ food }) => {
     const [reviews, setReviews] = useState([]);
+    const { user } = useContext(AuthContext)
     const { category, foodName, origin, ingredient, person, photoURL, price, _id, description } = food;
 
     useEffect(() => {
@@ -43,7 +45,10 @@ const FoodReviews = ({ food }) => {
 
                 <div className='flex justify-center mt-8'>
                     <Link to={`/addreview/${_id}/${foodName}`} className="btn rounded bg-[#EB0029] border-none text-white hover:animate-pulse">
-                        ADD YOUR REVIEW
+                        {
+                            user ? "ADD YOUR REVIEW"
+                            : "LOGIN TO ADD YOUR REVIEW"
+                        }
                     </Link>
                 </div>
             </div>
