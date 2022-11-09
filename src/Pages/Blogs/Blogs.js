@@ -291,7 +291,7 @@ const Blogs = () => {
                     <div className="collapse rounded">
                         <input type="checkbox" className="peer" />
                         <div className="collapse-title bg-primary text-primary-content peer-checked:bg-primary peer-checked:text-secondary-content">
-                            <h2 className='font-bold'>HOW DORS NODEJS HANDLE MULTIPLE REQUESTS AT THE SAME TIME?</h2>
+                            <h2 className='font-bold'>HOW DOES NODEJS HANDLE MULTIPLE REQUESTS AT THE SAME TIME?</h2>
                         </div>
                         <div className="collapse-content bg-primary peer-checked:bg-accent">
                             <p className='text-bold text-lg text-justify text-slate-200 p-4'>NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them. That's how NodeJS handle multiple requests at the same time.

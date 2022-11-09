@@ -1,7 +1,7 @@
 import React from 'react';
+import { FaTrash, FaEdit } from "react-icons/fa";
 
-const MyReview = ({ myReview }) => {
-    console.log(myReview);
+const MyReview = ({ myReview, handleReviewEdit, handleReviewDelete }) => {
     const { foodPhotoURL, foodName, addedDate, ratings, reviewText, _id, reviewerEmail, reviewerName, foodId } = myReview;
     return (
         <tr>
@@ -37,8 +37,21 @@ const MyReview = ({ myReview }) => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-sm rounded-none">TAKE ACTION</label>
                     <ul tabIndex={0} className="dropdown-content menu rounded-box w-28 gap-y-1">
-                        <li><button className='btn btn-sm btn-accent rounded-none text-xs'>EDIT REVIEW</button></li>
-                        <li><button className='btn btn-sm btn-accent rounded-none text-xs'>DELETE REVIEW</button></li>
+                        <li>
+                            <button
+                                onClick={() => handleReviewEdit(_id, reviewerEmail)}
+                                className='btn btn-sm btn-accent rounded-none'
+                            >
+                                <FaEdit className='text-yellow-400 text-xl flex items-center justify-center'></FaEdit>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => handleReviewDelete(_id, reviewerEmail)}
+                                className='btn btn-sm btn-accent rounded-none p-2'>
+                                <FaTrash className='text-yellow-400 text-xl flex items-center justify-center'></FaTrash>
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </td>
