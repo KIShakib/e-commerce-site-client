@@ -45,7 +45,6 @@ const AddReviewForm = () => {
             addedTimeEncrypted,
             addedDate
         }
-        console.log(review);
         fetch("http://localhost:5000/addreview", {
             method: "POST",
             headers: {
@@ -55,7 +54,6 @@ const AddReviewForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged) {
                     toast.success(`${reviewerName}, Your Review Fo ${foodName} Added Successfully. Thanks For Your Review.`)
                     form.reset();

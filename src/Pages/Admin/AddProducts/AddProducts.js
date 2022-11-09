@@ -33,7 +33,6 @@ const AddProducts = () => {
             description,
             addedTimeEncrypted
         }
-        console.log(food);
         fetch("http://localhost:5000/addfood", {
             method: "POST",
             headers: {
@@ -43,7 +42,6 @@ const AddProducts = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged) {
                     toast.success(`${foodName} added successfully to the database...`)
                     form.reset();

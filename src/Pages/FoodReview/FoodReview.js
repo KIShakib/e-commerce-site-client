@@ -8,7 +8,6 @@ import featureImg4 from "../../Assets/Image/home/delivery-man.png";
 import Rating from 'react-rating';
 
 const FoodReview = ({ review }) => {
-    console.log(review);
     const { reviewerName, reviewerPhotoURL, reviewerEmail, reviewText, ratings, addedDate, addedTimeEncrypted, foodId, foodName, _id } = review;
     return (
         <div className="relative group hover:bg-red-600 transition hover:z-[1] hover:shadow-2xl">

@@ -1,7 +1,10 @@
 import React from 'react';
 import { FaTrash, FaEdit } from "react-icons/fa";
+import EditReview from '../EditReview/EditReview';
 
 const MyReview = ({ myReview, handleReviewEdit, handleReviewDelete }) => {
+
+
     const { foodPhotoURL, foodName, addedDate, ratings, reviewText, _id, reviewerEmail, reviewerName, foodId } = myReview;
     return (
         <tr>
@@ -33,27 +36,52 @@ const MyReview = ({ myReview, handleReviewEdit, handleReviewDelete }) => {
             <td className="py-5 border-b border-gray-200 bg-white text-sm">
                 <textarea className='border border-gray-800 w-2/3 p-2' readOnly name="reviewText" value={reviewText} id="" cols="40" rows="2"></textarea>
             </td>
-            <td className="py-5 border-b border-gray-200 bg-white text-sm">
-                <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-sm rounded-none">TAKE ACTION</label>
-                    <ul tabIndex={0} className="dropdown-content menu rounded-box w-28 gap-y-1">
-                        <li>
-                            <button
-                                onClick={() => handleReviewEdit(_id, reviewerEmail)}
-                                className='btn btn-sm btn-accent rounded-none'
-                            >
-                                <FaEdit className='text-yellow-400 text-xl flex items-center justify-center'></FaEdit>
+            <td className="py-5 pb-20 h-full border-b border-gray-200 bg-white text-sm flex items-center gap-x-1">
+                <button
+                    className='btn btn-sm btn-accent rounded-none'
+                >
+
+                    <label htmlFor="my-modal">
+                        <FaEdit className='text-yellow-400 text-xl flex items-center justify-center'></FaEdit>
+                    </label>
+                </button>
+
+
+
+                {/* Review Edit Modal Start */}
+                <input type="checkbox" id="my-modal" className="modal-toggle" />
+                <div className="modal">
+                    <div className="modal-box rounded-none">
+                        <EditReview
+                            reviewText={reviewText}
+                            handleReviewEdit={handleReviewEdit}
+                            _id={_id}
+                            reviewerEmail={reviewerEmail}
+                        >
+
+                        </EditReview>
+                        <div className="modal-action">
+                            <button className='font-extrabold text-2xl text-yellow-500 bg-slate-300 w-10 h-10 rounded-full'>
+                                <label htmlFor="my-modal">
+                                    X
+                                </label>
                             </button>
-                        </li>
-                        <li>
-                            <button
-                                onClick={() => handleReviewDelete(_id, reviewerEmail)}
-                                className='btn btn-sm btn-accent rounded-none p-2'>
-                                <FaTrash className='text-yellow-400 text-xl flex items-center justify-center'></FaTrash>
-                            </button>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
+                {/* Review Edit Modal End */}
+
+
+
+
+
+                <button
+                    onClick={() => handleReviewDelete(_id, reviewerEmail)}
+                    className='btn btn-sm btn-accent rounded-none'>
+
+                    <FaTrash className='text-yellow-400 text-xl flex items-center justify-center'></FaTrash>
+
+                </button>
             </td>
         </tr>
     );

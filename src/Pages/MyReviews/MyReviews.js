@@ -1,20 +1,24 @@
 import React, { useState, useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { Blocks } from 'react-loader-spinner';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import MyReview from '../MyReview/MyReview';
 
 const MyReviews = () => {
+    const [dependency, setDependency] = useState("")
     const [myReviews, setMyReviews] = useState([]);
     const { user } = useContext(AuthContext);
+    const [loader, setLoader] = useState(true);
     const { displayName, email, photoURL } = user;
 
     useEffect(() => {
         fetch(`http://localhost:5000/myallreview/${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                setMyReviews(data)
+                setMyReviews(data);
+                setLoader(false);
             })
-    }, [user?.email]);
+    }, [user?.email, dependency]);
 
 
     const handleReviewDelete = (id, reviewerEmail) => {
@@ -25,7 +29,6 @@ const MyReviews = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.deletedCount) {
                         const remainingReview = myReviews.filter(myReview => myReview._id !== id);
                         setMyReviews(remainingReview);
@@ -37,8 +40,29 @@ const MyReviews = () => {
     }
 
 
-    const handleReviewEdit = id => {
-        console.log(id);
+    const handleReviewEdit = (_id, reviewerEmail, reviewTextEdit, newRatings) => {
+        setDependency(reviewTextEdit)
+        const updatedReview = {
+            reviewTextEdit,
+            newRatings
+        }
+        fetch(`http://localhost:5000/updatereview/${_id}/${reviewerEmail}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ updatedReview })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    const editedReview = myReviews.find(myReview => myReview._id === _id);
+
+                    editedReview.reviewText = reviewTextEdit;
+                    editedReview.ratings = newRatings;
+
+                }
+            })
     }
 
 
@@ -124,68 +148,86 @@ const MyReviews = () => {
                                             className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
                                     </div>
                                 </div>
-                                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                                    <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                                        <table className="min-w-full leading-normal">
-                                            <thead>
-                                                <tr>
-                                                    <th
-                                                        className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                        FOOD IMAGE
-                                                    </th>
-                                                    <th
-                                                        className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                        FOOD NAME
-                                                    </th>
-                                                    <th
-                                                        className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                        REVIEW TIME
-                                                    </th>
-                                                    <th
-                                                        className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                        RATINGS
-                                                    </th>
-                                                    <th
-                                                        className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                        MY REVIEW
-                                                    </th>
-                                                    <th
-                                                        className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                        ACTIONS
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {
-                                                    myReviews.map(myReview => <MyReview
-                                                        key={myReview._id}
-                                                        myReview={myReview}
-                                                        handleReviewDelete={handleReviewDelete}
-                                                        handleReviewEdit={handleReviewEdit}
-                                                    >
+                                <div>
+                                    {
+                                        loader &&
+                                        <div className='w-full h-full flex justify-center items-center'>
+                                            <Blocks
+                                                visible={true}
+                                                height="80"
+                                                width="80"
+                                                ariaLabel="blocks-loading"
+                                                wrapperStyle={{}}
+                                                wrapperClass="blocks-wrapper"
+                                            />
+                                        </div>
+                                    }
+                                </div>
+                                {
+                                    !loader &&
+                                    <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                                        <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                                            <table className="min-w-full leading-normal">
+                                                <thead>
+                                                    <tr>
+                                                        <th
+                                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                            FOOD IMAGE
+                                                        </th>
+                                                        <th
+                                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                            FOOD NAME
+                                                        </th>
+                                                        <th
+                                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                            REVIEW TIME
+                                                        </th>
+                                                        <th
+                                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                            RATINGS
+                                                        </th>
+                                                        <th
+                                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                            MY REVIEW
+                                                        </th>
+                                                        <th
+                                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                            ACTIONS
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {
+                                                        myReviews.map(myReview => <MyReview
+                                                            key={myReview._id}
+                                                            myReview={myReview}
+                                                            handleReviewDelete={handleReviewDelete}
+                                                            handleReviewEdit={handleReviewEdit}
+                                                        >
 
-                                                    </MyReview>)
-                                                }
-                                            </tbody>
-                                        </table>
-                                        <div
-                                            className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                                            <span className="text-gray-900 font-bold">
-                                                Showing {myReviews.length} Reviews
-                                            </span>
-                                            <div className="inline-flex mt-2 xs:mt-0">
-                                                <button
-                                                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
-                                                    Prev
-                                                </button>
-                                                <button
-                                                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
-                                                    Next
-                                                </button>
+                                                        </MyReview>)
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            <div
+                                                className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
+                                                <span className="text-gray-900 font-bold">
+                                                    Showing {myReviews.length} Reviews
+                                                </span>
+                                                <div className="inline-flex mt-2 xs:mt-0">
+                                                    <button
+                                                        className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
+                                                        Prev
+                                                    </button>
+                                                    <button
+                                                        className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
+                                                        Next
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         }
                     </div>
