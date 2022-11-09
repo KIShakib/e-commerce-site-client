@@ -110,9 +110,7 @@ const MyReviews = () => {
                                         <div className="relative">
                                             <select
                                                 className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                                <option>5</option>
-                                                <option>10</option>
-                                                <option>20</option>
+                                                <option>{myReviews.length}</option>
                                             </select>
                                             <div
                                                 className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
