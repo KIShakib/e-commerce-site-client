@@ -15,6 +15,7 @@
     "react-loader-spinner": "^5.3.4",
     "react-neon-ui": "^1.0.19",
     "react-photo-view": "^1.2.2",
+    "react-rating": "^2.0.5",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",

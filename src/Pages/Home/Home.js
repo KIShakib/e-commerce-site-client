@@ -4,6 +4,7 @@ import HomePageFoods from '../HomePageFoods/HomePageFoods';
 import "./Home.css";
 
 const Home = () => {
+
     return (
         <div>
             <div className="relative w-full">
