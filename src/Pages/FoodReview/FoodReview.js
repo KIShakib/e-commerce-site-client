@@ -13,7 +13,7 @@ const FoodReview = ({ review }) => {
     return (
         <div className="relative group hover:bg-red-600 transition hover:z-[1] hover:shadow-2xl">
             <div className="w-full h-full relative p-8 space-y-8 border-dashed rounded-lg transition duration-300 group-hover:bg-white group-hover:border group-hover:scale-90 flex flex-col justify-evenly">
-                <img src={reviewerPhotoURL} className="w-8 rounded-full" width="512" height="512" alt="burger illustration" />
+                <img src={reviewerPhotoURL} className="w-12 h-12 rounded-full" alt="burger illustration" />
 
                 <div className="space-y-2">
                     <h5 className="text-xl text-gray-800 font-bold transition group-hover:text-yellow-600 feature-title">{reviewerName}</h5>

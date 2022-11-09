@@ -20,9 +20,40 @@ const MyReviews = () => {
         <div className="antialiased font-sans bg-gray-200">
             <div className="container mx-auto px-4 sm:px-8">
                 <div className="py-8">
-                    <div>
-                        {myReviews.length}
+
+
+
+
+
+
+                    <div class="flex justify-center bg-white shadow-lg rounded-lg mx-4 md:mx-auto max-w-md md:max-w-2xl ">
+                        <div class="py-6">
+                            <img class="w-12 h-12 mx-auto rounded-full object-cover shadow" src={user.photoURL} alt="avatar" />
+                            <div class="flex items-center justify-center mt-2">
+                                <h2 class="text-lg text-center font-semibold text-gray-900 -mt-1">{user.displayName}</h2>
+                            </div>
+                            <div class="mt-4 flex justify-center items-center">
+                                <div class="flex justify-center items-center text-gray-700">
+                                    <svg fill="none" viewBox="0 0 24 24" class="w-8 h-8" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                                    </svg>
+                                    <span className='text-3xl font-bold'>{myReviews.length}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
                     <div className="my-2 flex sm:flex-row flex-col">
                         <div className="flex flex-row mb-1 sm:mb-0">
                             <div className="relative">

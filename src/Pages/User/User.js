@@ -14,7 +14,7 @@ const User = () => {
                     ?
                     <div className={` ${theme ? "bg-gray-900" : "bg-yellow-100"} font-sans h-screen w-full flex flex-row justify-center items-center`}>
                         <div className={`card w-96 mx-auto ${theme ? "bg-slate-700 text-slate-300" : "bg-white"} rounded-none`}>
-                            <img className="w-32 mx-auto rounded-full border-8 border-white" src={user.photoURL} alt="" />
+                            <img className="w-32 h-32 mx-auto rounded-full border-8 border-white" src={user.photoURL} alt="" />
                             <div className="text-center mt-2 text-3xl font-medium">{user?.displayName}</div>
                             {
                                 user.email &&
@@ -23,11 +23,6 @@ const User = () => {
                                 </div>
                             }
                             <small className="text-center font-semibold text-base flex items-center justify-center"><FaUser></FaUser> {user?.uid.toUpperCase()}</small>
-                            <div className="px-6 text-center mt-2 font-light text-sm">
-                                <p className='font-bold'>
-                                    Front-End Developer
-                                </p>
-                            </div>
                             <hr className="mt-8" />
                             <div className="flex p-4">
                                 <div className="w-1/2 text-center">

@@ -36,7 +36,7 @@ const Navbar = () => {
                                     user?.uid &&
                                     <Link className='bg-[#EB0029] rounded-full p-1' to="/user">
                                         {
-                                            user.photoURL ? <img className='w-12 rounded-full' src={user?.photoURL} alt="" />
+                                            user.photoURL ? <img className='w-12 h-12 rounded-full' src={user?.photoURL} alt="" />
                                                 : <img src={userPhoto} alt="/user" />
                                         }
                                     </Link>
@@ -89,7 +89,7 @@ const Navbar = () => {
                         user?.uid &&
                         <Link to="/user" className='bg-[#EB0029] rounded-full p-1'>
                             {
-                                user.photoURL ? <img className='w-12 rounded-full' src={user?.photoURL} alt="" />
+                                user.photoURL ? <img className='w-12 h-12 rounded-full' src={user?.photoURL} alt="" />
                                     : <img src={userPhoto} alt="/user" />
                             }
                         </Link>

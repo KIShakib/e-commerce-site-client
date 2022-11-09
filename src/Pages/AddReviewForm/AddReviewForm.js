@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const AddReviewForm = () => {
@@ -9,6 +9,7 @@ const AddReviewForm = () => {
     const { _id } = useParams();
     const { category, foodName, origin, ingredient, person, photoURL, price, description } = food;
     const foodPhotoURL = photoURL;
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:5000/food/${_id}`)
@@ -58,6 +59,7 @@ const AddReviewForm = () => {
                 if (data.acknowledged) {
                     toast.success(`${reviewerName}, Your Review Fo ${foodName} Added Successfully. Thanks For Your Review.`)
                     form.reset();
+                    navigate(`/fooddetails/${_id}`)
                 }
             })
 

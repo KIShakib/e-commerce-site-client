@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { FaMoneyBill } from 'react-icons/fa';
 
 const Food = ({ food }) => {
     const { category, foodName, origin, ingredient, person, photoURL, price, _id } = food;
@@ -22,6 +23,7 @@ const Food = ({ food }) => {
                                 {
                                     ingredient.map(ingrdt => <span className='text-white font-bold mx-1' key={ingrdt}>{ingrdt}.</span>)
                                 }
+                                <p className='flex items-center justify-center mt-4 text-xl gap-x-1'><FaMoneyBill></FaMoneyBill>{price}</p>
                             </p>
                         </div>
                         <Link to={`/fooddetails/${_id}`} className="btn rounded bg-[#8d1529] border-none text-white hover:bg-[#EB0029] absolute left-1/3 bottom-4 font-bold h-10 w-48 mx-auto">SEE DETAILS</Link>
