@@ -21,6 +21,7 @@ const AddProducts = () => {
         const ingredient5 = form.ingredient5.value;
         const ingredient6 = form.ingredient6.value;
         const ingredient = [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6];
+        const addedTimeEncrypted = new Date().getTime();
         const food = {
             foodName,
             category,
@@ -29,7 +30,8 @@ const AddProducts = () => {
             photoURL,
             person,
             ingredient,
-            description
+            description,
+            addedTimeEncrypted
         }
         console.log(food);
         fetch("http://localhost:5000/addfood", {

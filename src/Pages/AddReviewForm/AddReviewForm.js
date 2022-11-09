@@ -8,6 +8,7 @@ const AddReviewForm = () => {
     const { user } = useContext(AuthContext);
     const { _id } = useParams();
     const { category, foodName, origin, ingredient, person, photoURL, price, description } = food;
+    const foodPhotoURL = photoURL;
 
     useEffect(() => {
         fetch(`http://localhost:5000/food/${_id}`)
@@ -38,6 +39,7 @@ const AddReviewForm = () => {
             ratings,
             foodName,
             foodId,
+            foodPhotoURL,
             reviewerPhotoURL,
             addedTimeEncrypted,
             addedDate
