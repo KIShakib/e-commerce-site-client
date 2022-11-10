@@ -7,13 +7,23 @@ import MyReview from '../MyReview/MyReview';
 const MyReviews = () => {
     const [dependency, setDependency] = useState("")
     const [myReviews, setMyReviews] = useState([]);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [loader, setLoader] = useState(true);
     const { displayName, email, photoURL } = user;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myallreview/${user?.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/myallreview/${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("_vld_tkn")}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    toast.error(`UnAuthorized Access ${res.status}`)
+                    logOut()
+                }
+                return res.json()
+            })
             .then(data => {
                 setMyReviews(data);
                 setLoader(false);

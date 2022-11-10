@@ -29,7 +29,24 @@ const SignUp = () => {
 
         createUser(userEmail, userPassword)
             .then(result => {
+                const user = result.user;
+                const currentUser = {
+                    email: user.email
+                }
                 console.log(result);
+
+                fetch("http://localhost:5000/jwt", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem("_vld_tkn", data.token);
+                    })
                 handleUpdateUserProfile(userName, userPhotoURL);
                 logOut();
                 toast.success("Your Account Created Successfully. Thanks For Signup. Now Please Login...");
