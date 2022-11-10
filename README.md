@@ -12,4 +12,4 @@
 - This Is A Food Service Web Application
 - User Can See Lots Of Foods And Can Give Review About Food
 - Their As An Admin Dashboard. From Where Admin Can Add Foods, Check Orders, Reviews etc.
-- Some NPM Pacage Are Used ( react-photo-view, react-icons, react-hot-toast, react-ratings, react-loader-spinner etc )
+- Some NPM Packages Are Used For More Interactivity ( react-photo-view, react-icons, react-hot-toast, react-ratings, react-loader-spinner etc )
