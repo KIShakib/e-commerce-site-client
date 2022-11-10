@@ -4,10 +4,13 @@ import { FaThList } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import FoodReviews from '../FoodReviews/FoodReviews';
+import useDynamicTitle from '../../Hooks/useDynamicTitle';
 
 const FoodDetails = () => {
     const food = useLoaderData();
     const { category, foodName, origin, ingredient, person, photoURL, price, _id, description } = food;
+
+    useDynamicTitle("Food Details")
     return (
         <div>
             <div>

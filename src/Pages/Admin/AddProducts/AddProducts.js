@@ -1,7 +1,10 @@
 import React from 'react';
 import toast from 'react-hot-toast';
+import useDynamicTitle from '../../../Hooks/useDynamicTitle';
 
 const AddProducts = () => {
+
+    useDynamicTitle("Add Food - Admin Dashboard")
 
     const handleAddFood = e => {
         e.preventDefault();

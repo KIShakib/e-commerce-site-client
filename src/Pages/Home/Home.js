@@ -1,9 +1,11 @@
 import React from 'react';
+import useDynamicTitle from '../../Hooks/useDynamicTitle';
 import FeatureSection from '../FeatureSection/FeatureSection';
 import HomePageFoods from '../HomePageFoods/HomePageFoods';
 import "./Home.css";
 
 const Home = () => {
+    useDynamicTitle("Home")
 
     return (
         <div>

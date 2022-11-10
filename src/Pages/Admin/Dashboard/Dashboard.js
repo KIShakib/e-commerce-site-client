@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../../Assets/Image//Logo/Shakib's_Kitchen.png";
+import useDynamicTitle from '../../../Hooks/useDynamicTitle';
 
 const DashBoard = () => {
+    useDynamicTitle("Admin Dashboard")
     return (
         <div className="bg-gray-100 w-1/4">
             <div className="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-yellow-400 hover:shadow-lg">

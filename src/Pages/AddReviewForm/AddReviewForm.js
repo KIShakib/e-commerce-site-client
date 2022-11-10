@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useDynamicTitle from '../../Hooks/useDynamicTitle';
 
 const AddReviewForm = () => {
     const [food, setFood] = useState({});
@@ -10,6 +11,7 @@ const AddReviewForm = () => {
     const { category, foodName, origin, ingredient, person, photoURL, price, description } = food;
     const foodPhotoURL = photoURL;
     const navigate = useNavigate();
+    useDynamicTitle("Add Review")
 
     useEffect(() => {
         fetch(`http://localhost:5000/food/${_id}`)

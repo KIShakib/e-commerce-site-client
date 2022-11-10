@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import googleLogo from "../../../Assets/Image/Authentication_Image/google.png"
+import useDynamicTitle from '../../../Hooks/useDynamicTitle';
 
 const Login = () => {
     const { loginUser, signInWithGoogle, theme, user } = useContext(AuthContext);
@@ -12,6 +13,8 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/user";
+
+    useDynamicTitle("Login")
 
 
 

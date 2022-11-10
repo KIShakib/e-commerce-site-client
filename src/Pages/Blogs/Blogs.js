@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useDynamicTitle from '../../Hooks/useDynamicTitle';
 
 const Blogs = () => {
+
+    useDynamicTitle("Blogs")
+
+
     return (
         <div className='bg-yellow-50'>
             <div className='lg:w-4/5 mx-auto w-full flex flex-col gap-y-4 p-24'>

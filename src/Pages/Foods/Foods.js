@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Blocks } from 'react-loader-spinner';
+import useDynamicTitle from '../../Hooks/useDynamicTitle';
 import Food from '../Food/Food';
 
 const Foods = () => {
@@ -16,6 +17,8 @@ const Foods = () => {
     }, [])
     // const foods = useLoaderData();
     console.log(foods);
+
+    useDynamicTitle("Foods")
 
     return (
         <div>

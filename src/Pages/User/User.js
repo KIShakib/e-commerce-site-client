@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import { FaGoogle, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useDynamicTitle from '../../Hooks/useDynamicTitle';
 
 const User = () => {
     const { user, logOut, theme } = useContext(AuthContext);
+
+    useDynamicTitle("User");
 
 
     return (

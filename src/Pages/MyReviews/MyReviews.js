@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { Blocks } from 'react-loader-spinner';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useDynamicTitle from '../../Hooks/useDynamicTitle';
 import MyReview from '../MyReview/MyReview';
 
 const MyReviews = () => {
@@ -10,6 +11,8 @@ const MyReviews = () => {
     const { user, logOut } = useContext(AuthContext);
     const [loader, setLoader] = useState(true);
     const { displayName, email, photoURL } = user;
+    
+    useDynamicTitle("My Reviews")
 
     useEffect(() => {
         fetch(`http://localhost:5000/myallreview/${user?.email}`, {

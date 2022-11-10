@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import email from "../../../Assets/Image/Authentication_Image/email.png"
 import photo from "../../../Assets/Image/Authentication_Image/photo.png"
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import useDynamicTitle from '../../../Hooks/useDynamicTitle';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ const SignUp = () => {
 
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/login";
+    useDynamicTitle("Signup")
 
 
     // Handle Create User
