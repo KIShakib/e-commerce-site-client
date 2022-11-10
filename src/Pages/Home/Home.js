@@ -1,5 +1,6 @@
 import React from 'react';
 import useDynamicTitle from '../../Hooks/useDynamicTitle';
+import ChefDetail from '../ChefDetail/ChefDetail';
 import FeatureSection from '../FeatureSection/FeatureSection';
 import HomePageFoods from '../HomePageFoods/HomePageFoods';
 import "./Home.css";
@@ -55,6 +56,15 @@ const Home = () => {
             {/* Extra Sections */}
             <div>
                 <FeatureSection></FeatureSection>
+            </div>
+
+            {/* Another Extra Section */}
+            <div className='my-40 py-20 bg-yellow-50'>
+                <div className='mb-14'>
+                    <p className='text-4xl font-bold foods-text text-center'><span className='text-red-600'>Shakib's Kitcen's</span> Chef</p>
+                    <p className='text-center foods-header mt-1'>Shakib's Kitchen always try to make delicious food.<br /> To make sure it must need a master chef...</p>
+                </div>
+                <ChefDetail></ChefDetail>
             </div>
         </div>
     );

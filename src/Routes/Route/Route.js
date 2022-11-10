@@ -3,6 +3,7 @@ import AdminLayout from "../../Layouts/AdminLayout";
 import Main from "../../Layouts/Main";
 import AddReviewForm from "../../Pages/AddReviewForm/AddReviewForm";
 import AddProducts from "../../Pages/Admin/AddProducts/AddProducts";
+import AdminProgress from "../../Pages/AdminsProgress/AdminProgress";
 import Login from "../../Pages/Authentication/Login/Login";
 import SignUp from "../../Pages/Authentication/SignUp/SignUp";
 import Blogs from "../../Pages/Blogs/Blogs";
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
         path: "/admin",
         element: <AdminLayout></AdminLayout>,
         children: [
+            {
+                path: "/admin",
+                element: <AdminProgress></AdminProgress>
+            },
             {
                 path: "/admin/addproduct",
                 element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>
