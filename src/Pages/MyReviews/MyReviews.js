@@ -11,11 +11,11 @@ const MyReviews = () => {
     const { user, logOut } = useContext(AuthContext);
     const [loader, setLoader] = useState(true);
     const { displayName, email, photoURL } = user;
-    
+
     useDynamicTitle("My Reviews")
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myallreview/${user?.email}`, {
+        fetch(`https://shakibs-kitchen-server.vercel.app/myallreview/${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("_vld_tkn")}`
             }
@@ -37,7 +37,7 @@ const MyReviews = () => {
     const handleReviewDelete = (id, reviewerEmail) => {
         const proceed = window.confirm("Are You Sure To Delete This Service?")
         if (proceed) {
-            fetch(`http://localhost:5000/deletereview/${id}/${reviewerEmail}`, {
+            fetch(`https://shakibs-kitchen-server.vercel.app/deletereview/${id}/${reviewerEmail}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
@@ -59,7 +59,7 @@ const MyReviews = () => {
             reviewTextEdit,
             newRatings
         }
-        fetch(`http://localhost:5000/updatereview/${_id}/${reviewerEmail}`, {
+        fetch(`https://shakibs-kitchen-server.vercel.app/updatereview/${_id}/${reviewerEmail}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

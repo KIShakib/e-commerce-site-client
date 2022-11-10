@@ -9,7 +9,7 @@ const FoodReviews = ({ food }) => {
     const { category, foodName, origin, ingredient, person, photoURL, price, _id, description } = food;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewbyid/${_id}`)
+        fetch(`https://shakibs-kitchen-server.vercel.app/reviewbyid/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
@@ -47,7 +47,7 @@ const FoodReviews = ({ food }) => {
                     <Link to={`/addreview/${_id}/${foodName}`} className="btn rounded bg-[#EB0029] border-none text-white hover:animate-pulse">
                         {
                             user ? "ADD YOUR REVIEW"
-                            : "LOGIN TO ADD YOUR REVIEW"
+                                : "LOGIN TO ADD YOUR REVIEW"
                         }
                     </Link>
                 </div>

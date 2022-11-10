@@ -12,12 +12,14 @@ import Foods from "../../Pages/Foods/Foods";
 import Home from "../../Pages/Home/Home";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
 import User from "../../Pages/User/User";
+import ErrorElement from "../../Shared/ErrorElement/ErrorElement";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorElement></ErrorElement>,
         children: [
             {
                 path: "/",
@@ -30,7 +32,7 @@ export const router = createBrowserRouter([
             {
                 path: "/fooddetails/:id",
                 element: <FoodDetails></FoodDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/food/${params.id}`)
+                loader: ({ params }) => fetch(`https://shakibs-kitchen-server.vercel.app/food/${params.id}`)
             },
             {
                 path: "/addreview/:_id/:foodName",
@@ -61,6 +63,7 @@ export const router = createBrowserRouter([
     {
         path: "/admin",
         element: <AdminLayout></AdminLayout>,
+        errorElement: <ErrorElement></ErrorElement>,
         children: [
             {
                 path: "/admin",

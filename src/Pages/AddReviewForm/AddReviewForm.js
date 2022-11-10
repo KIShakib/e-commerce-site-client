@@ -14,7 +14,7 @@ const AddReviewForm = () => {
     useDynamicTitle("Add Review")
 
     useEffect(() => {
-        fetch(`http://localhost:5000/food/${_id}`)
+        fetch(`https://shakibs-kitchen-server.vercel.app/food/${_id}`)
             .then(res => res.json())
             .then(data => setFood(data))
     }, [_id]);
@@ -47,7 +47,7 @@ const AddReviewForm = () => {
             addedTimeEncrypted,
             addedDate
         }
-        fetch("http://localhost:5000/addreview", {
+        fetch("https://shakibs-kitchen-server.vercel.app/addreview", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

@@ -37,7 +37,7 @@ const SignUp = () => {
                 }
                 console.log(result);
 
-                fetch("http://localhost:5000/jwt", {
+                fetch("https://shakibs-kitchen-server.vercel.app/jwt", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

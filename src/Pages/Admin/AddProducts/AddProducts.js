@@ -36,7 +36,7 @@ const AddProducts = () => {
             description,
             addedTimeEncrypted
         }
-        fetch("http://localhost:5000/addfood", {
+        fetch("https://shakibs-kitchen-server.vercel.app/addfood", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

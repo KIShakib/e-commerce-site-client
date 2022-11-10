@@ -8,7 +8,7 @@ const HomePageFoods = () => {
     const [loader, setLoader] = useState(true);
     const [foods, setFoods] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/homepagefoods")
+        fetch("https://shakibs-kitchen-server.vercel.app/homepagefoods")
             .then(res => res.json())
             .then(data => {
                 setFoods(data)
